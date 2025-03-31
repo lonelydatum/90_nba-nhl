@@ -8,15 +8,26 @@ gsap.defaults({
 
 const {w, h} = size
 
-const READ_PRE = {
+const nhl = {
+	t1: 2.2,
+	t2: 1.2,
+	t3: 1,
+}
+
+const  nba = {
 	t1: 3,
 	t2: 1.2,
 	t3: 1,
 }
 
 
+let READ = {
+nhl,nba
+}
 
-const READ = READ_PRE
+
+READ = READ[universalBanner.name]
+console.log(READ);
 
 
 
@@ -62,10 +73,13 @@ function start_landscape(vh={x:-size.w}){
 	tl.add(olg())
 }
 
-function start(vh={x:-size.w}){
+function start(boo=true, vh={x:-size.w}){
 	const tl = init()		
-	// return
-	TweenLite.to(".hero img", {duration:3, x:0, y:0, scale:.5, delay:.3, ease:"power2.in"})
+	return
+	if(boo){
+		TweenLite.to(".hero img", {duration:2.5, x:0, y:0, scale:.5, delay:.2, ease:"power2.in"})	
+	}
+	
 	tl.from('.t1', stag(vh), "start");		
 	tl.to('.t1', {duration:.3, opacity:0}, `+=${READ.t1}`);		
 
