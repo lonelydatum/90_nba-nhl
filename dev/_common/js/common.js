@@ -21,9 +21,24 @@ const  nba = {
 }
 
 
+const nhl_plus = {
+	t1: 2.2,
+	t2: 1.2,
+	t3: 1,
+}
+
+const  nba_plus = {
+	t1: 2.3,
+	t2: 1.9,
+	t3: 1,
+}
+
+
 let READ = {
 nhl,nba
 }
+READ["nba-plus"] = nba_plus
+READ["nhl-plus"] = nhl_plus
 
 
 READ = READ[universalBanner.name]

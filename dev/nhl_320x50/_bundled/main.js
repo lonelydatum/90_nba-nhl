@@ -31,9 +31,23 @@ var nba = {
 	t3: 1
 };
 
+var nhl_plus = {
+	t1: 2.2,
+	t2: 1.2,
+	t3: 1
+};
+
+var nba_plus = {
+	t1: 2.3,
+	t2: 1.9,
+	t3: 1
+};
+
 var READ = {
 	nhl: nhl, nba: nba
 };
+READ["nba-plus"] = nba_plus;
+READ["nhl-plus"] = nhl_plus;
 
 READ = READ[universalBanner.name];
 console.log(READ);
