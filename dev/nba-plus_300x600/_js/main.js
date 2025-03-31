@@ -1,38 +1,38 @@
+import {init, olg, size} from '../../_common/js/common.js'
 
 
-import {init, start} from '../../_common/js/common.js'
-
-
-
-
-const colors = [	
-	"2ed145", 
-	"46d442", 
-	"5eda40", 
-	"76de3d", 
-	"8de23b", 
-	"a4e739", 
-	"bbeb37",
-	"d3ef35",	
-	]
-
-const barOptions  ={
-	colors,
-	verHor:"h",
-	TOTAL: 8,
-	WIDTH: 50,
-	HEIGHT: 20,
-	GAP: -50,
-	id:"bars",
-	
+function stag(vh){
+	return { duration:.3, opacity:0, stagger: .1, ...vh }
 }
 
-const barOptions2  ={
-	...barOptions,
-	colors:colors.reverse(),
-	GAP: 50,
-	WIDTH:370,
-	id:"bars2"
+function start(vh={x:-size.w}){
+	const tl = init()		
+	
+	
+	
+	tl.from('.t1', stag(vh), "+=.2");		
+	tl.to('.frame1', {duration:.3, opacity:0}, `+=2`);		
+
+	
+	
+	
+
+	tl.to('.frame2', {opacity:1, duration:.2} );		
+
+
+	tl.from('.end_logo', {duration:.3, opacity:0});	
+
+	tl.from('.end_txt1', {duration:.3, opacity:0});	
+	tl.from('.end_txt2', {duration:.3, opacity:0}, "+=.3");	
+
+	tl.from([".end_cta", ".end_smart"], {duration:.3, opacity:0});	
+
+
+	
+ 
+	
+	
+	tl.add(olg())
 }
 
 

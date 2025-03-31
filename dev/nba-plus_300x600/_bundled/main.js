@@ -74,10 +74,14 @@ function start_landscape() {
 
 	tl.from('.t1', stag(vh), "start+=.3");
 	tl.from('.logo', { opacity: 0, duration: .3 });
-	tl.to([".t1", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
 
-	// const barTL2 =barOptions2.verHor==="h" ? animate_bars_vertical(barOptions2) : animate_bars_horizontal(barOptions2)
-	// tl.add(barTL2, "end")	
+	if (universalBanner.name === "nhl-plus") {
+		tl.to([".t1"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+		tl.from('.t2', stag(vh), "+=.3");
+		tl.to([".t2", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+	} else {
+		tl.to([".t1", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+	}
 
 	tl.from(".end_txt1", { duration: .2, opacity: 0 });
 
@@ -117,6 +121,7 @@ exports.size = size;
 exports.init = init;
 exports.start = start;
 exports.start_landscape = start_landscape;
+exports.olg = _proline.olg;
 
 },{"./proline":2}],2:[function(require,module,exports){
 "use strict";
@@ -142,33 +147,37 @@ function olg() {
 exports.olg = olg;
 
 },{}],3:[function(require,module,exports){
-"use strict";
+'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _commonJsCommonJs = require('../../_common/js/common.js');
 
-var colors = ["2ed145", "46d442", "5eda40", "76de3d", "8de23b", "a4e739", "bbeb37", "d3ef35"];
+function stag(vh) {
+	return _extends({ duration: .3, opacity: 0, stagger: .1 }, vh);
+}
 
-var barOptions = {
-	colors: colors,
-	verHor: "h",
-	TOTAL: 8,
-	WIDTH: 50,
-	HEIGHT: 20,
-	GAP: -50,
-	id: "bars"
+function start() {
+	var vh = arguments.length <= 0 || arguments[0] === undefined ? { x: -_commonJsCommonJs.size.w } : arguments[0];
 
-};
+	var tl = (0, _commonJsCommonJs.init)();
 
-var barOptions2 = _extends({}, barOptions, {
-	colors: colors.reverse(),
-	GAP: 50,
-	WIDTH: 370,
-	id: "bars2"
-});
+	tl.from('.t1', stag(vh), "+=.2");
+	tl.to('.frame1', { duration: .3, opacity: 0 }, '+=2');
 
-(0, _commonJsCommonJs.start)();
+	tl.to('.frame2', { opacity: 1, duration: .2 });
+
+	tl.from('.end_logo', { duration: .3, opacity: 0 });
+
+	tl.from('.end_txt1', { duration: .3, opacity: 0 });
+	tl.from('.end_txt2', { duration: .3, opacity: 0 }, "+=.3");
+
+	tl.from([".end_cta", ".end_smart"], { duration: .3, opacity: 0 });
+
+	tl.add((0, _commonJsCommonJs.olg)());
+}
+
+start();
 
 module.exports = {};
 

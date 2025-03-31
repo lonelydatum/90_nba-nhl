@@ -71,11 +71,15 @@ function start_landscape(vh={x:-size.w}){
 	 
 	tl.from('.t1', stag(vh), "start+=.3");	
 	tl.from('.logo', {opacity:0, duration:.3});	
-	tl.to([".t1", ".bars", ".logo"], {duration:.3, opacity:0}, `+=${READ.t1}`)
 	
-	// const barTL2 =barOptions2.verHor==="h" ? animate_bars_vertical(barOptions2) : animate_bars_horizontal(barOptions2)
-	// tl.add(barTL2, "end")	
 	
+	if(universalBanner.name==="nhl-plus"){
+		tl.to([".t1"], {duration:.3, opacity:0}, `+=${READ.t1}`)
+		tl.from('.t2', stag(vh), "+=.3");	
+		tl.to([".t2", ".bars", ".logo"], {duration:.3, opacity:0}, `+=${READ.t1}`)
+	}else{
+		tl.to([".t1", ".bars", ".logo"], {duration:.3, opacity:0}, `+=${READ.t1}`)
+	}
 	
 
 	tl.from(".end_txt1", {duration:.2, opacity:0})
@@ -98,6 +102,7 @@ function start(boo=true, vh={x:-size.w}){
 	tl.from('.t1', stag(vh), "start");		
 	tl.to('.t1', {duration:.3, opacity:0}, `+=${READ.t1}`);		
 
+	
 	tl.from('.t2', stag(vh));	
 	
 
@@ -122,7 +127,7 @@ function start(boo=true, vh={x:-size.w}){
 
 
 
-export {size, init, start, start_landscape}
+export {size, init, start, start_landscape, olg}
 
 
 

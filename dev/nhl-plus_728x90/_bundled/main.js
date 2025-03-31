@@ -74,10 +74,14 @@ function start_landscape() {
 
 	tl.from('.t1', stag(vh), "start+=.3");
 	tl.from('.logo', { opacity: 0, duration: .3 });
-	tl.to([".t1", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
 
-	// const barTL2 =barOptions2.verHor==="h" ? animate_bars_vertical(barOptions2) : animate_bars_horizontal(barOptions2)
-	// tl.add(barTL2, "end")	
+	if (universalBanner.name === "nhl-plus") {
+		tl.to([".t1"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+		tl.from('.t2', stag(vh), "+=.3");
+		tl.to([".t2", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+	} else {
+		tl.to([".t1", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+	}
 
 	tl.from(".end_txt1", { duration: .2, opacity: 0 });
 
@@ -117,6 +121,7 @@ exports.size = size;
 exports.init = init;
 exports.start = start;
 exports.start_landscape = start_landscape;
+exports.olg = _proline.olg;
 
 },{"./proline":2}],2:[function(require,module,exports){
 "use strict";
@@ -142,28 +147,9 @@ function olg() {
 exports.olg = olg;
 
 },{}],3:[function(require,module,exports){
-"use strict";
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+'use strict';
 
 var _commonJsCommonJs = require('../../_common/js/common.js');
-
-var colors = ["d3ef35", "c4ec37", "b3ea38", "a2e739", "92e33a", "82e03c", "71de3d", "61da40", "52d641", "41d343", "30d144", "20ce46", "10ca46"];
-
-var barOptions = {
-	colors: colors,
-	verHor: "v",
-	TOTAL: 8,
-	WIDTH: 6,
-	HEIGHT: 360,
-	GAP: -19,
-	id: "bars"
-
-};
-
-var barOptions2 = _extends({}, barOptions, {
-	id: "bars2"
-});
 
 (0, _commonJsCommonJs.start_landscape)({ y: _commonJsCommonJs.size.h });
 

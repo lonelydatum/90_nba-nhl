@@ -74,10 +74,14 @@ function start_landscape() {
 
 	tl.from('.t1', stag(vh), "start+=.3");
 	tl.from('.logo', { opacity: 0, duration: .3 });
-	tl.to([".t1", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
 
-	// const barTL2 =barOptions2.verHor==="h" ? animate_bars_vertical(barOptions2) : animate_bars_horizontal(barOptions2)
-	// tl.add(barTL2, "end")	
+	if (universalBanner.name === "nhl-plus") {
+		tl.to([".t1"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+		tl.from('.t2', stag(vh), "+=.3");
+		tl.to([".t2", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+	} else {
+		tl.to([".t1", ".bars", ".logo"], { duration: .3, opacity: 0 }, "+=" + READ.t1);
+	}
 
 	tl.from(".end_txt1", { duration: .2, opacity: 0 });
 
@@ -117,6 +121,7 @@ exports.size = size;
 exports.init = init;
 exports.start = start;
 exports.start_landscape = start_landscape;
+exports.olg = _proline.olg;
 
 },{"./proline":2}],2:[function(require,module,exports){
 "use strict";
