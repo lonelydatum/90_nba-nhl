@@ -79,7 +79,7 @@ function start() {
 	var tl = init();
 
 	if (boo) {
-		TweenLite.to(".hero img", { duration: 2.5, x: 0, y: 0, scale: .5, delay: .2, ease: "power2.in" });
+		TweenLite.from(".hero img", { duration: 2.5, x: 0, y: 0, scale: .5, delay: .2, ease: "power2.in" });
 	}
 
 	tl.from('.t1', stag(vh), "start");
