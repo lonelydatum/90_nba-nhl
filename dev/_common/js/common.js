@@ -75,7 +75,7 @@ function start_landscape(vh={x:-size.w}){
 
 function start(boo=true, vh={x:-size.w}){
 	const tl = init()		
-	return
+	
 	if(boo){
 		TweenLite.to(".hero img", {duration:2.5, x:0, y:0, scale:.5, delay:.2, ease:"power2.in"})	
 	}

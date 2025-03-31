@@ -77,7 +77,7 @@ function start() {
 	var vh = arguments.length <= 1 || arguments[1] === undefined ? { x: -size.w } : arguments[1];
 
 	var tl = init();
-	return;
+
 	if (boo) {
 		TweenLite.to(".hero img", { duration: 2.5, x: 0, y: 0, scale: .5, delay: .2, ease: "power2.in" });
 	}
